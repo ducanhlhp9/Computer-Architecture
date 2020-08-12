@@ -1,0 +1,64 @@
+khi cộng 2 số mà nó vượt quá dải biểu diễn của số nguyên 32 bit thì nó sẽ bị tràn số
+
+
+bài 1 : kiểm tra xem có bị tràn số hay không
+
+cộng 2 số nguyên dương nếu tổng ra số âm => tràn số
+cộng 2 số âm tổng ra số dương => bị trang số
+giả sử  2 toán hạng được lưu trong s1 s2 và lưu kết quả vào s3
+.text
+start:
+li $t0,0 		//ban đầu gán t0 = 0
+addu $s3,$s1,$s2  	//lấy tổng s1 s2 lưu vào s3// phải dùng addu vì nếu dùng add và bị tràn số thì bị exception
+xor $t1,$s1,$s2 	// lấy s1 xor với s2 và lưu vào t1 (kiểm tra xem có cùng dấu không) xác định dấu thì bit ngoài cùng bên tay trái là bit dấu, bằng 1 là âm, bằng 0 là dương
+bltz $t1,EXIT 		//nếu t1 là số âm thì kết thúc
+slt $t2,$s3,$s1		// nếu là số dương thì dùng leenjj sl để so sánh s3< s1 thì t2 là 1 và ngược lại s3 >= s1 thì t2 = 0
+bltz $s1,NEGATIVE 	// if kiểm tra s1 < 0 thì nhảy đến NEGATIVE, không nhảy thì kiểm tra t2
+beq $t2,$zero,EXIT 	//s1 and $s2 are positive
+			// if $s3 > $s1 then the result is not overflow
+j OVERFLOW
+NEGATIVE:
+bne $t2,$zero,EXIT 	//nếu là số âm thì nhảy đến 
+# if $s3 < $s1 then the result is not overflowHa Noi University of Science and Technology
+School of Information and Communication Technology
+OVERFLOW:
+li $t0,1 		#thiết lập thanh ghi t0 =1 
+EXIT:
+
+bài tập 1 code lại mã, thêm 2 giá trị cho s1 và s2 để kiểm tra tràn số hay không
+5 trường hợp:  2 dương không tràn, 2 dương tràn, 2 âm tràn, 2 âm không tràn, 2 số trái
+
+bài 2 dùng các lệnh and để tách giá trị mong muốn
+phân tích : andi vs 1 thì = nó, andi vs 0 thì bằng 0, muốn lấy 
+khi mà 
+tạo mặt nạ, tát cả giá trị không quan tâm thì cho = 0,
+tại vị trí muốn tách ra thì cho nó giá trị 1
+lệnh 3
+
+lsb thì  tách 8 bit bên trái 
+
+bài 3:
+sll dịch trái, srl dịch phải
+phân tích sll $s1, $s0, 2 lấy giá trị s0 dịch trái 2 bit và lưu vào s1
+dịch 1 bit thì nhân vs 2, 2 bit thì 2^2
+
+phân tích bài tập
+	bài 2: sử dụng các lệnh logic tách các thông tin,
+1: tách LSB (and)
+2: xóa byte LSB(8 bit bên phải = 0)(and)
+3: 8 bit bên phải = 1 (dùng lệnh or)
+4: clear cả thanh ghi cho = 0 cho and vs 0(xor chính nó) 
+bài 3: 
+giới thiệu 1 số lệnh không phải basic mà là mở rộng
+
+viết lại bằng cách sử dụng các lệnh cơ bản() vào help để xem
+viết code y nguyên sau đó dịch và xem trong phần chạy
+
+bài 4:
+giống bài 1 tuy nhiên sử dụng ntac khác
+kiểm tra giá trị tổng có cùng dấu vs 2 toán hạng hay không
+
+bài 5 sử dụng lệnh dịch để lũy thừa 2
+
+câu hỏi: so sánh SLLV và SLL
+SRLV và SRL

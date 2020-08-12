@@ -1,0 +1,40 @@
+.data
+A: .word -1, -2, 4, 5, -6, -3, 10, 9, 8, 7, 100
+length: .word 10
+ .text
+main:
+# Use $v0 to hold firstUnsortedIndex
+# Use $v1 to hold testIndex
+# Use $a0 to hold elementToInsert
+# Use $a1 to hold value of A[ .. ]
+# Use $a2 to calculate the address of A[ ... ] in
+# Use $a3 to hold the value of (length-1)
+# Use $t0 to hold the base/starting address of the A array
+for_init: li $v0, 1
+lw $a3, length
+sub $a3, $a3, 1
+la $t0, A
+for_loop: bgt $v0, $a3, end_for
+sub $v1, $v0, 1
+mul $a2, $v0, 4 # address of A[i]= base addr of A + i*(element size)
+add $a2, $t0, $a2
+lw $a0, 0($a2)
+while: blt $v1, 0, end_while
+mul $a2, $v1, 4 # address of A[i]= base addr of A + i*(element size)
+add $a2, $t0, $a2
+lw $a1, 0($a2)
+ble $a1, $a0, end_while
+sw $a1, 4($a2)
+sub $v1, $v1, 1
+j while
+end_while:
+mul $a2, $v1, 4 # address of A[i]= base addr of A + i*(element size)
+add $a2, $t0, $a2
+sw $a0, 4($a2)
+addi $v0, $v0, 1
+j for_loop
+end_for:
+li $v0, 10 # system call to exit
+syscall
+
+#http://www.cs.uni.edu/~fienup/cs041s09/lectures/lec18_solution_questions.pdf

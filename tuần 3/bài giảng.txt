@@ -1,0 +1,61 @@
+week 3
+
+***lệnh nhảy : nhiệm vụ là nếu thỏa mãn điều kiện thì nhảy đến tương ứng. khi nhảy đến nhãn nào thì sẽ chạy từ đó trở đi
+lệnh jump thay kí hiệu basic của nhãn thành địa chỉ của nhãn tương ứng. thanh ghi PC sẽ ứng với địa chỉ của lệnh sắp
+
+có 1 số lệnh nhảy: 	j : nhảy bình thường
+			bge : nhảu nếu 2 thanh ghi đầu vào có giá trị bằng nhau
+			bne : nhảy nếu 2 thanh t1 và t2 là khác nhau
+			bgez: nhảy nếu thanh t1 lớn hơn hoặc bằng 0
+			blez: <= 0
+			bltz: <0
+			bgtz: > 0
+			bgt : nhảy nếu t0 > t1 không phải lệnh basic khi mà dịch nên khi dịch thì nó dịch là lệnh "slt" và "bne"
+
+
+***cấu trúc if then else
+essembler chỉ kiểm tra điều kiện sai:
+
+
+th1: if ... then ... endif
+ nếu sai -> nhảy đến endif còn nếu ko sai thì sẽ chuyển đến câu lệnh của điều kiện đúng
+
+
+trường hợp 2: if ... then.. else... endif
+
+sau khi kết thúc hành động 1 nhảy đến endif
+
+if:
+kiểm tra điều kiện sai => nhảy đến else:
+then:
+	hanh_dong_1
+	j endif:
+else:
+	hanh_dong_2
+endif:
+		
+
+***không có câu lệnh so sánh trực tiếp 2 số với nhau mà phải qua câu lệnh "slt"
+
+slt: so sánh thanh ghi 2 với 3 => thiết lập thanh ghi t1 = 0; => t2>= t3 và ngược lại
+
+
+muốn tính giá trị thị cần phải biết địa chỉ của ai, sau đó dùng loadword, để tính được địa chỉ của ai thì phải xem khoảng cách n đến a0 là bao nhiêu thì tính ai*4 + s2
+
+mỗi 1 phần tử sẽ được lưu vào 1 từ nhớ có giá trị 4 byte
+
+
+
+-- thẻ li để nạo giá trị
+
+
+
+gợi ý: kiểm tra so sánh nhỏ hơn dùng slt và bne
+
+kiểm tra j-i xem kết quả thế nào với 0 để lưu lại và nhảy
+
+
+
+
+bài 5 : điều kiện tiếp tục lặp, kết thúc vòng lặp khai báo 1 số âm lớn sau đó + vào tổng nếu tổng < 0 thì dừng
+

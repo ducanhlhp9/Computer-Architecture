@@ -1,0 +1,21 @@
+làm việc với các thuật toán sắp xếp
+
+mảng trong mips, các phần tử cùng kiểu đặt liên tiếp trong bộ nhớ
+tất cả dùng kiểu word và 1 ptu có kích thước 4 byte
+
+khi làm việc thì có 2 kiểu dùng indexx và dung pointer
+
+index dung một thanh ghi để luuw chỉ số của 1 ptu trong mảng
+đia chỉ A[i] đia chỉ đầu + i*4
+
+cách dùng pointer
+các con trỏ bản chất là địa chỉ của các ptu:
+giả sử biết địa chỉ của A[i] muốn xác định [i+] = A[i]+4
+
+phân tích bài 1: tìm tỏng tiền tố lớn nhất trong mảng, tính từ đầu cho đến vị trí của n
+
+
+bài 1 2
+làm 2 home assignment
+3: sắp xếp nổi bọt
+4: sắp xếp chèn

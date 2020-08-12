@@ -1,0 +1,31 @@
+#Laboratory Exercise 5, Home Assignment 5
+.data
+buffer:	.space 22
+.text
+	li $s6, 20	#Max length
+	li $s7, 10	#ASCII code of '\n'
+	la $s0, buffer	#Load buffer
+	li $s1, 0	#index = 0
+	li $s3, 0	# i = 0
+start_read_char:
+	li $v0,12
+	syscall	#Read char
+	add $s1, $s0, $s3	#Load buffer[i]
+	addi $s3, $s3,1		# s3 = s3 +1 <-> i = i +1 
+	beq $s3, $s6, end_read_char	# if max length, exit
+	beq $v0, $s7, Print_the_reverse_string 	# if enter , exit
+	sb $v0, 0($s1)
+	j start_read_char
+end_read_char:
+	sb $v0, 0($s1)
+	li $v0, 11
+	li $a0, '\n'
+	syscall
+Print_the_reverse_string:
+	li $v0, 11
+	lb $a0,0($s1)
+	syscall
+	beq $s1, $s0, exit
+	add $s1, $s1, -1
+	j Print_the_reverse_string
+exit:

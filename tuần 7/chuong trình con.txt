@@ -1,0 +1,45 @@
+muốn gọi đến ct con nào thì dùng lệnh jal
+điểm khác biệt vs j: 	thực hiện 2 việc, thay đổi thanh PC= địa chỉ của nhãn
+			sử dụng thêm thanh "ra" chứa địa chỉ của lệnh tiếp theo sau "jal"
+muốn quay lại chương trình chính thì dùng lệnh "jr" nhảy đến địa chỉ trong thanh ghi "ra"
+bài tập:
+1, 2 thực hiện ví dụ
+1: tính giá trị tuyệt đối
+2:
+3: stack
+push: cung cấp vùng nhớ 8 byte trong ngăn nhớ và đẩy giá trị vao
+pop: muốn lấy giá trị thì dùng lệnh "lw"
+truyền tham số cho các chương trình con: 
+muốn truyền nhiều tham số vào chương trình con và muốn lấy ra nhiều thì sao?
+=> sử dụng ngăn xếp
+khi ct con chạy thì gọi các ct con khác vậy muốn lưu trữ trạng thái ct con và 
+lưu trữ tham só thì làm sao:
+=> sử dụng ngăn xếp để luuw trữ tham số trước khi gọi đến chương trình con tránh bị 
+ghi đè dữ liệu
+sp: trỏ vào đỉnh ngăn xếp, lưu trữ và lấy giá trị
+fp: trỏ vào đỉnh của một cái khung của ngăn xếp của mỗi chương trình con đó
+trước khi chương trình con bắt đầu thì giá trị cũ sẽ được lưu vào ft
+
+4: tính n giai thừa dùng đệ quy
+warp: lưu thanh sp vào stack
+=> lưu sp vào fp
+=> cấp vùng nhớ mới
+
+đoạn từ slti: kiểm tra điều kiện
+
+
+bài 3 minh họa việc sử dụng ngăn xếp
+bài 4: code lại và chạy thử xem có chính xác không
+chạy thử n=3 để tính 3!
+vẽ bảng để thể hiện giá trị ngăn xếp khi n = 3
+bài 5:
+thực hiện ct tình giá trị lớn nhất và nhỏ nhất trong 8 thanh từ s0->s7
+khi lưu các giá trị thanh ghi vào stack: ô nhớ liền kề=> sử dụng vòng lặp
+đầu vào 8 thanh ghi s0-s7
+đầu ra 4 thanh ghi t0-t3
+
+các bài liên quan đến stack muốn xem vùng nhớ stack đang trỏ bởi con trỏ sp
+
+7fffeff4  new $sp (3) addi $sp,$sp,-8
+
+bài 5 : tạo chương trình con có 8 đầu vào 

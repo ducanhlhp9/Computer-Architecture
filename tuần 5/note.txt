@@ -1,0 +1,58 @@
+Lệnh vào ra của hệ thống, nhập xuất dữ liệu các lệnh in
+
+Sử dụng thông qua hàm syscall
+lời gọi đến các dịch vụ của hệ thống
+khi mà làm việc với nó thì phải khao báo xem sử dụng dịch vụ gì
+thanh $v0 để gọi dịch vụ
+
+các hàm 
+1: in số nguyên
+2: in chuỗi kí tự
+5: đọc số nguyên
+8: đọc chuỗi kí tự
+10: exit
+11: in kí tự
+12: đọc kí tự
+13 14 15 16 đọc ghi file
+17:exit => trả về mã kết thúc, 
+30, 31 32 33 liên quan đến MIDI phát nhạc hệ thống
+các hàm diglog hiển thị ra hộp thoại
+
+các hàm hay dùng
+1: in số nguyên
+56: in số nguyên dưới dạng hộp thoại
+4: in 1 chuỗi kí tự
+59: in chuỗi kí tự dưới dạng hộp thoại
+6: nhập số nguyên dưới dạng hộp thoại
+54 nhập xâu kí tự dạng hộp thoại
+11: in 1 kí tự
+
+giải thích bài tập:
+
+bài 2 : đặt lệnh nop sau các lệnh rẽ nhánh khi sử dụng tính năng delay branching
+bài 3:
+xác định độ dài  1 chuỗi kí tự
+xác định xem vị trí xuất hiện kết thúc xâu là vị trí nào, tinhs khoảng cách đó
+
+dùng 1 hàm để nhập xâu và lưu vào chuỗi string
+message in ra thông báo
+
+đọc từng kí tự của xâu ra màn hình
+đọc địa chỉ xâu vào a0
+khởi tạo giá trị t0 là 0
+t1= a0+t0
+lb: đọc kĩ tự ở t1 và t2
+kiểm tra t2 = 0 hay ko nếu gặp thì kết thúc
+chưa phải thì tăng i lên và quay lại check
+khi mà dừng rồi thì t0 chính là số kí tự
+
+
+bài 1 : thử các hàm vào ra, đọc xâu, in xâu, số nguyên
+bài 2: in 1 cái xâu định s0 s1 chưa 2 giá trị nào đó, tính tổng rồi in ra
+in từng chữ cái 1
+bài 3: thêm 2 lệnh để nạp địa chỉ cho xâu nguồn và xâu đích
+bài 4: thực hiện bài 3, bước đầu : thêm hàm nhập xâu kí tự
+bước cuối in dodojdaif xâu ra, dùng các lệnh syscall
+bài 5: cho người dùng nhập xâu kí tự từ bàn phím (độ dài = khi nhân enter hoặc nhỏ hơn 20)
+lưu kí tự vào trong 1 buffer và in ra theo chiều ngược lại
+

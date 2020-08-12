@@ -1,0 +1,40 @@
+bài2
+gán giá trị, mục đích gán s0 - giá trị đó
+công cụ mars ko làm việc vs các số 32 bit mà n tách thành 2 số 16 bit
+
+tác dụng ori gán
+
+bài 3 : giả lệnh: giúp quá trình viết code nhanh chóng, đơn giản hơn,
+dòng 1 nàp giá trị 0x3.. vào thanh $s0
+dòng 2 nạp giá trị 02x vào s1 
+
+bài 4: 
+addi gán giá trị ban đầu cho $t1 t2
+
+
+điểm tương đồng text segment có phù hợp với mã máy k
+
+bài 5:
+
+mflo move from lo lấy giá trị cuae thanh ghi lo và lưu vào $s1
+ 
+
+bài 6: khai báo biến 
+x: .word 5 (kiểu .word là 4 byte)
+la là lênh gán địa chỉ : $t8 lưu địa chỉ của x...
+lw lấy giá trị: lấy giá trị của offset($t8) lưu vào $t1( lấy địa chỉ đang lưu ở $t8 và nạp vào $t2)
+(offset + $t8)
+sw: save word
+
+
+
+so sánh
+code được biểu diễn bằng 8 kí tự hexa
+
+lệnh la giá trị 32 bit phải tách thành 2 lệnh: lui : nạp giá trị nửa trên vào thành ghi 1
+						ori: nạp nửa dưới thực hiện phép or
+						kết quả gán vào $t8
+
+lệnh mul đầu tiên là lệnh mul basic nên nó ko đổi
+lệnh mul thứ 2 không phải là lệnh basic nên nó biến đổi thành 2 lệnh
+lệnh mul tiếp theo thực hiện phép mul trên 3 thanh ghi
